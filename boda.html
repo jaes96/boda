@@ -42,7 +42,8 @@
             z-index: -1;
     }
     #countdown {
-        margin-bottom: 8vh;
+        font-size: 20px;
+
     }
     .titulo{
         position: absolute;
@@ -52,15 +53,15 @@
         height: 100%;
         display: flex;
         flex-direction: column;
-        justify-content: space-between;
+        justify-content: space-around;
         align-items: center;
         color: white;
         background: rgba(0, 0, 0, 0.5); /* Fondo negro semitransparente */
         
     }
    .title{
-    font-size: 2rem;
-    margin-top: 5px;
+    font-size: 2.5rem;
+   
 
    }
    .invitation-container {
@@ -104,15 +105,44 @@
             font-size: 12px;
             margin: 10px 0;
         }
+        .nombre{
+            padding: 20px;
+            border: 1px solid white;
+        }
+        .cuadro {
+            display: flex;
+            justify-content: center;
+            padding-top: 20px;
+            /* border: 1px solid white; */
+            width: 100%;
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+        .fecha {
+            position: absolute;
+            transform: translateY(215%);
+    font-size: 25px;
+        }
     </style>
 </head>
 <body>
     <section id="section1">
         <img class="imgFondo" src="img/fondo.jpg" alt="">
         <div class="titulo">
-            <label class="title">NOS CASAMOS</label>
-            <label style="margin-bottom: 15px;"></label>
-            <label id="countdown">FALTAN</label>
+            <div>
+                <label class="title">Nos casamos</label>
+            </div>
+            <div style="text-align: center;">
+                <div class="cuadro">
+                    <label class="nombre">ALMA & NEFTALÍ</label>
+                    <div class="fecha">09 · 11 · 2024</div>
+                </div>
+                
+                
+                <label id="countdown">Faltan</label>
+            </div>
+           
+           
         </div>
     </section>
     <section id="section2">
@@ -131,7 +161,23 @@
     $(document).ready(function() {
         // Fecha objetivo
         var targetDate = new Date("2024-11-09T19:00:00").getTime();
+        var now = new Date().getTime();
+            var distance = targetDate - now;
 
+            // Cálculo de días, horas, minutos y segundos
+            var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            // Mostrar la cuenta regresiva en el label
+            $("#countdown").text("Faltan " + days + " días " + hours + " horas " + minutes + " minutos " + seconds + " segundos ");
+
+            // Si la cuenta regresiva ha terminado
+            if (distance < 0) {
+                clearInterval(countdown);
+                $("#countdown").text("¡La boda ha comenzado!");
+            }
         // Actualizar la cuenta regresiva cada 1 segundo
         var countdown = setInterval(function() {
             var now = new Date().getTime();
@@ -144,13 +190,13 @@
             var seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
             // Mostrar la cuenta regresiva en el label
-            $("#countdown").text("FALTAN " + days + "d " + hours + "h " + minutes + "m " + seconds + "s ");
+            $("#countdown").text("Faltan " + days + " días " + hours + " horas " + minutes + " minutos " + seconds + " segundos ");
 
             // Si la cuenta regresiva ha terminado
             if (distance < 0) {
                 clearInterval(countdown);
                 $("#countdown").text("¡La boda ha comenzado!");
             }
-        }, 100);
+        }, 1000);
     });
 </script>
