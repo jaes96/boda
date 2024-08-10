@@ -13,7 +13,7 @@
         body, html {
             height: 100%;
             margin: 0;
-            font-family: Arial, sans-serif;
+            font-family: "Dancing Script", cursive;
             scroll-snap-type: y mandatory;
         }
 
@@ -106,28 +106,11 @@
             margin: 10px 0;
         }
         .nombre{
-            content: '';
             padding: 20px;
             
-            border-top: 1px solid white;
-            border-right: 1px solid white;
-            border-left: 1px solid white;
+            border: 1px solid white;
         }
-        .nombre::before, .nombre::after {
-            content: '';
-            position: absolute;
-            bottom: 240;
-            width: 10%; /* Ajusta el tamaño de los bordes izquierdo y derecho */
-            height: 1px; /* Grosor del borde */
-            background-color: white; /* Color del borde */
-        }
-        .nombre::before {
-            left: 0;
-        }
-
-        .nombre::after {
-            right: 0;
-        }
+        
 
         .nombre {
             font-size: 24px;
@@ -136,7 +119,7 @@
             display: flex;
             justify-content: center;
             padding-top: 20px;
-            /* border: 1px solid white; */
+              
             width: 100%;
             padding-bottom: 20px;
             margin-bottom: 30px;
@@ -144,12 +127,78 @@
         
         .fecha {
             position: absolute;
-            transform: translateY(215%);
+            transform: translateY(180%);
     font-size: 25px;
+        }
+        .carta{
+            display: flex;
+            position: fixed;
+            width: 100vw;
+            height: 100vh;
+            
+            z-index: 999;
+        }
+        .izquierdo{
+            background-color: blue;
+            width: 50vw;
+            height: 100vh;
+            z-index: 9999;
+            clip-path: polygon(75% 0%, 100% 50%, 75% 100%, 0% 100%, 0 53%, 0% 0%);
+            transition: transform 1s ease-out;
+        }
+        .derecho{
+            background-color: green;
+           
+            width: 50vw;
+            height: 100vh;
+            z-index: 9999;
+            clip-path: polygon(100% 0, 100% 50%, 100% 100%, 0% 100%, 25% 50%, 0% 0%);
+            transform: translateX(-13%) scale(1.5);
+            transition: transform 1s ease-out;
+        }
+        .caida {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            background-color: yellow;
+            border-radius: 50%;
+            z-index: 999999;
+            top: 42%;
+    left: 45%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        transition: opacity 1s ease-out;
+        }
+        .caida.caida-animacion {
+            animation: caida 1s forwards;
+        }
+
+        @keyframes caida {
+            0% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(600px); /* Ajusta según el tamaño de la pantalla */
+                opacity: 0;
+            }
         }
     </style>
 </head>
 <body>
+    <div class="caida" id="caida" onclick="abrir()">
+        Click
+    </div>
+    <div class="carta">
+        <div id="izq" class="izquierdo">
+            
+        </div>
+        <div id="der" class="derecho">
+            
+        </div>
+    </div>
     <section id="section1">
         <img class="imgFondo" src="img/fondo.jpg" alt="">
         <div class="titulo">
@@ -222,5 +271,20 @@
                 $("#countdown").text("¡La boda ha comenzado!");
             }
         }, 1000);
+    });
+    function abrir(){
+
+    }
+    document.getElementById('caida').addEventListener('click', function() {
+        this.classList.add('caida-animacion');
+        var izq = document.getElementById('izq');
+            izq.style.transform = 'translateX(-100%)';
+            var der = document.getElementById('der');
+            der.style.transform = 'translateX(115%)';
+        // Opcionalmente, puedes eliminar el div después de que termine la animación
+        setTimeout(() => {
+            this.style.display = 'none';
+            
+        }, 1000); // Asegúrate de que este tiempo coincida con la duración de la animación
     });
 </script>
