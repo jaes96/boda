@@ -15,8 +15,11 @@
             margin: 0;
             font-family: "Dancing Script", cursive;
             scroll-snap-type: y mandatory;
+            
         }
-
+        body{
+            overflow-x: hidden;
+        }
         section {
             height: 100vh;
             display: flex;
@@ -27,10 +30,10 @@
         }
 
         #section2 {
-            background-color: #33FF57;
+            background-color: #F5F5DC;
         }
         #section3 {
-            background-color: #3357FF;
+            background-color: #F5F5DC;
         }
         .imgFondo{
         position: absolute;
@@ -46,18 +49,16 @@
 
     }
     .titulo{
-        position: absolute;
-        top: 0;
-        left: 0;
+        
         width: 100%;
-        height: 100%;
+        height: 90%;
         display: flex;
         flex-direction: column;
-        justify-content: space-around;
+        justify-content: end;
         align-items: center;
         color: white;
         background: rgba(0, 0, 0, 0.5); /* Fondo negro semitransparente */
-        
+        padding-bottom: 10vh;
     }
    .title{
     font-size: 2.5rem;
@@ -70,6 +71,23 @@
             text-align: center;
            
             position: relative;
+            
+        }
+        .imgFon{
+            padding: 10px;
+            height: 30vh;
+            background-image: url('./img/fondo2.jpeg');
+            color: white;
+            background-size: cover; /* o 'contain' según tu necesidad */
+            background-position: center; /* Ajusta la posición si es necesario */
+            background-repeat: no-repeat; 
+        }
+        .backBlack{
+            background: rgba(0, 0, 0, 0.6);
+            width: 100vw;
+            height: 100%;
+            padding-top: 20px;
+            transform: translateY(-10px);
         }
         .decorative-border {
             position: absolute;
@@ -92,7 +110,7 @@
             font-weight: normal;
         }
         .invitation-container p {
-            font-size: 15px;
+            font-size: 25px;
             margin: 10px 0;
         }
         .date-time {
@@ -176,6 +194,7 @@
             cursor: pointer;
             transition: opacity 1s ease-out;
             box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+            animation: aumentoDisminucion 2s infinite;
         }
         .caida.caida-animacion {
             animation: caida 1s forwards;
@@ -196,11 +215,35 @@
             position: relative;
             z-index: 999999;
         }
+        @keyframes aumentoDisminucion {
+            0% {
+                transform: translate(-50%, -50%) scale(1); /* Tamaño original */
+            }
+            50% {
+                transform: translate(-50%, -50%) scale(1.1); /* Tamaño aumentado (150%) */
+            }
+            100% {
+                transform: translate(-50%, -50%) scale(1); /* Tamaño original (de nuevo) */
+            }
+        }
+        .linea{
+            width: 20vw;
+            height: 2px;
+            background-color: white;
+            margin-top: 16;
+        }
+        .centro{
+            display: flex;
+            gap: 3vw;
+        }
+        .mar {
+            margin-bottom: 1.5vh;
+        }
     </style>
 </head>
 <body>
     <div class="caida" id="caida" onclick="abrir()">
-        Click
+        A & N
     </div>
     <div class="carta">
         <div class="tag-wrap">
@@ -216,31 +259,78 @@
     <section id="section1">
         <img class="imgFondo" src="img/fondo.jpg" alt="">
         <div class="titulo">
-            <div>
-                <label class="title">Nos casamos</label>
-            </div>
+           
             <div style="text-align: center;">
-                <div class="cuadro">
-                    <label class="nombre">ALMA & NEFTALÍ</label>
-                    <div class="fecha">09 · 11 · 2024</div>
+                <div class="mar">
+                   A & N
+                    
                 </div>
+                <div class="centro mar">
+                    <div class="linea"></div>
+                    <div style="font-size: 25px;">Nos casamos</div>
+                    <div class="linea"></div>
+                    
+                </div>
+                <div class="mar">ALMA & NEFTALÍ</div>
+                <div class="mar" style="font-size: 25;">09 . 11 . 2024</div>
                 
                 
-                <label id="countdown">Faltan</label>
             </div>
            
            
         </div>
     </section>
     <section id="section2">
-        <div class="invitation-container">
-            <p>NUESTRA BODA</p>
-            <h1>ALMA <br> & <br> NEFTALÍ</h1>
+        <div class="invitation-container ">
+            <div>
+                <p>En compañía de nuestros padres</p><br>
+                <p>Luis Miguel Esparza Gomez</p>
+                <p>María Guadalupe Santana Medina</p><br>
+                <p>La furia</p>
+                <p>La esposa</p>
+            </div><br><br>
+            <div class="imgFon">
+                <div class="backBlack">
+                    <br>
+                    <div>Nuestro día</div><br>
+                    <div style="font-size: 25px;">Sábado 09 de Noviembre, 2024</div><br>
+                    <div id="countdown">
+                            
+                        </div>
+                    <div></div>
+                </div>
+               
+            </div>
+            
         </div>
         
     </section>
     <section id="section3">
-        <h1>Tercera Sección</h1>
+        <div>
+            <h1>Itinerario</h1>
+        <div class="timeline">
+            
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <h2>Evento 1</h2>
+                    <p>Descripción del primer evento.</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <h2>Evento 2</h2>
+                    <p>Descripción del segundo evento.</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <h2>Evento 3</h2>
+                    <p>Descripción del tercer evento.</p>
+                </div>
+            </div>
+        </div>
+        </div>
+        
     </section>
 </body>
 </html>
@@ -258,7 +348,7 @@
             var seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
             // Mostrar la cuenta regresiva en el label
-            $("#countdown").text("Faltan " + days + " días " + hours + " horas " + minutes + " minutos " + seconds + " segundos ");
+            $("#countdown").text(" " + days + " d " + hours + " h " + minutes + " m " + seconds + " s");
 
             // Si la cuenta regresiva ha terminado
             if (distance < 0) {
@@ -277,7 +367,7 @@
             var seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
             // Mostrar la cuenta regresiva en el label
-            $("#countdown").text("Faltan " + days + " días " + hours + " horas " + minutes + " minutos " + seconds + " segundos ");
+            $("#countdown").text(" " + days + " d " + hours + " h " + minutes + " m " + seconds + " s ");
 
             // Si la cuenta regresiva ha terminado
             if (distance < 0) {
@@ -289,7 +379,7 @@
     function abrir(){
 
     }
-    document.getElementById('caida').addEventListener('click', function() {
+   document.getElementById('caida').addEventListener('click', function() {
         this.classList.add('caida-animacion');
         var izq = document.getElementById('izq');
             izq.style.transform = 'translateY(-100%)';
