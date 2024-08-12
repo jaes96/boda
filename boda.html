@@ -132,6 +132,7 @@
         }
         .carta{
             display: flex;
+            flex-direction: column;
             position: fixed;
             width: 100vw;
             height: 100vh;
@@ -139,37 +140,42 @@
             z-index: 999;
         }
         .izquierdo{
-            background-color: blue;
-            width: 50vw;
-            height: 100vh;
-            z-index: 9999;
-            clip-path: polygon(75% 0%, 100% 50%, 75% 100%, 0% 100%, 0 53%, 0% 0%);
+            background-color: #F5F5DC;
+            width: 100vw;
+            height: 50vh;
+            z-index: 99999;
+            clip-path: polygon(100% 0, 100% 75%, 50% 100%, 0 75%, 0 0);
+            /*clip-path: polygon(75% 0%, 100% 50%, 75% 100%, 0% 100%, 0 53%, 0% 0%);*/
             transition: transform 1s ease-out;
         }
+       
         .derecho{
-            background-color: green;
+            background-color: F5F5DC;
            
-            width: 50vw;
-            height: 100vh;
+            width: 100vw;
+            height: 50vh;
             z-index: 9999;
-            clip-path: polygon(100% 0, 100% 50%, 100% 100%, 0% 100%, 25% 50%, 0% 0%);
-            transform: translateX(-13%) scale(1.5);
+            /*clip-path: polygon(100% 0, 100% 50%, 100% 100%, 0% 100%, 25% 50%, 0% 0%);
+            /*transform: translateX(-13%) scale(1.5);*/
             transition: transform 1s ease-out;
+            transform: translateY(-50vh) scale(3);
         }
         .caida {
-            position: absolute;
+            position: fixed;
             width: 100px;
             height: 100px;
-            background-color: yellow;
+            background-color: CD7F32;
             border-radius: 50%;
             z-index: 999999;
-            top: 42%;
-    left: 45%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        cursor: pointer;
-        transition: opacity 1s ease-out;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            transition: opacity 1s ease-out;
+            box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
         }
         .caida.caida-animacion {
             animation: caida 1s forwards;
@@ -177,13 +183,18 @@
 
         @keyframes caida {
             0% {
-                transform: translateY(0);
+                
                 opacity: 1;
             }
             100% {
                 transform: translateY(600px); /* Ajusta según el tamaño de la pantalla */
                 opacity: 0;
             }
+        }
+        .tag-wrap {
+            filter: drop-shadow(1px 1px 3px rgba(50, 50, 0, 0.5));
+            position: relative;
+            z-index: 999999;
         }
     </style>
 </head>
@@ -192,9 +203,12 @@
         Click
     </div>
     <div class="carta">
-        <div id="izq" class="izquierdo">
+        <div class="tag-wrap">
+            <div id="izq" class="izquierdo">
             
+            </div>
         </div>
+        
         <div id="der" class="derecho">
             
         </div>
@@ -278,9 +292,9 @@
     document.getElementById('caida').addEventListener('click', function() {
         this.classList.add('caida-animacion');
         var izq = document.getElementById('izq');
-            izq.style.transform = 'translateX(-100%)';
+            izq.style.transform = 'translateY(-100%)';
             var der = document.getElementById('der');
-            der.style.transform = 'translateX(115%)';
+            der.style.transform = 'translateY(115%)';
         // Opcionalmente, puedes eliminar el div después de que termine la animación
         setTimeout(() => {
             this.style.display = 'none';
