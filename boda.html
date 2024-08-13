@@ -34,8 +34,7 @@
         }
         #section2 {
             background-color: #F5F5DC;
-            padding-top: 5vh;
-            padding-bottom: 5vh;
+            
         }
         #section3 {
             background-color: #F5F5DC;
@@ -72,21 +71,25 @@
 
    }
    .invitation-container {
-            padding-top: 20px;
            
             text-align: center;
            
             position: relative;
-            
+            width: 100%;
         }
         .imgFon{
             padding: 10px;
-            height: 30vh;
-            background-image: url('./img/fondo2.jpeg');
-            color: white;
+            height: 60vh;
+            background-image: url('./img/papel3.jpg');
+            color: black;
             background-size: cover; /* o 'contain' según tu necesidad */
             background-position: center; /* Ajusta la posición si es necesario */
             background-repeat: no-repeat; 
+            display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50px;
+    margin-top: 1vh;
         }
         .backBlack{
             background: rgba(0, 0, 0, 0.6);
@@ -245,23 +248,31 @@
         .mar {
             margin-bottom: 1.5vh;
         }
+        .card {
+            background-image: url('./img/papel4.jpg'); background-size: cover; background-position: center;
+            height: 70vh;
+            border-radius: 50px;
+            display: flex;
+    justify-content: end;
+    align-items: center;
+        }
     </style>
 </head>
 <body>
-    <div class="caida" id="caida" onclick="abrir()">
+    <!--<div class="caida" id="caida" onclick="abrir()">
         A & N
     </div>
     <div class="carta">
         <div class="tag-wrap">
             <div id="izq" class="izquierdo">
-            
+            <img width="100%" height="100%"  src="./img/papel2.jpg" alt="">
             </div>
         </div>
         
         <div id="der" class="derecho">
-            
+            <img width="100%" height="100%" src="./img/papel.jpg" alt="">
         </div>
-    </div>
+    </div>-->
     <section id="section1">
         <img class="imgFondo" src="img/fondo.jpg" alt="">
         <div class="titulo">
@@ -288,23 +299,28 @@
     </section>
     <section id="section2">
         <div class="invitation-container ">
-            <div >
-                <p>En compañía de nuestros padres</p><br>
-                <div style="display: flex; justify-content: space-around;">   
-                    <div>
-                        <p>Luis Miguel <br> Esparza Gómez</p>
-                        <p>María Guadalupe <br> Santana Medina</p>
-                    </div>
-                    <div>
-                        <p>J. Guadalupe <br> Gómez Ruvalcaba</p>
-                        <p>Ma. de Jesús <br> Díaz López</p>
+            <div class="card">
+                <div style="width: 60%;
+    transform: translateX(-3vw);">
+                    <p>En compañía de nuestros padres</p><br>
+                    <div style="display: flex; justify-content: space-around;">   
+                        <div>
+                            <p>Luis Miguel <br> Esparza Gómez</p>
+                            <p>María Guadalupe <br> Santana Medina</p>
+                        </div>
+                        <div>
+                            <p>J. Guadalupe <br> Gómez Ruvalcaba</p>
+                            <p>Ma. de Jesús <br> Díaz López</p>
+                        </div>
                     </div>
                 </div>
                 
                 
-            </div><br><br>
+                
+            </div>
             <div class="imgFon">
-                <div class="backBlack">
+              
+                <div style="transform: translateX(-4vw);">
                     <br>
                     <div>Nuestro día</div><br>
                     <div style="font-size: 25px;">Sábado 09 de Noviembre, 2024</div><br>
