@@ -27,7 +27,6 @@
             justify-content: center;
             align-items: center;
             font-size: 2em;
-            scroll-snap-align: start;
         }
         #section1{
             height: 100vh;
@@ -49,6 +48,8 @@
     background: white;
     border-radius: 50%;
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    position: relative;
+    z-index: 9;
         }
         .imgFondo{
         position: absolute;
@@ -372,7 +373,14 @@
         <div style="text-align: center;">
             <h1 style="color: #653720;">Itinerario</h1>
         <div class="timeline">
-            
+            <div class="lineatiempo" style="
+    position: absolute;
+    width: 1px;
+    height: 550px;
+    background: gray;
+    left: 22vh;
+    z-index: 1;
+"></div>
             <div class="timeline-item">
                 <div class="timeline-content centro">
                     <div  class="itine"><span class="mdi mdi-church-outline iconIti"></span></div>
