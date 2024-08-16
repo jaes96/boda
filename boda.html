@@ -63,6 +63,10 @@
             z-index: -1;
             filter: contrast(0.6) brightness(0.4);
     }
+    .imgFondo2{
+       
+            filter: contrast(0.6) brightness(0.6);
+    }
     #countdown {
         font-size: 20px;
 
@@ -289,7 +293,39 @@
             background: rgb(242 240 233);
             padding: 3px;
         }
-        
+        .fondo2{
+            width: 100vw;
+            height: 30vh;
+            margin-bottom: 15vh;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .fondo2 img {
+            width: 100%;
+        }
+        .contador {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            z-index: 1;
+        }
+        .bordes{
+            border-top: 1px solid #653720;
+            border-bottom: 1px solid #653720;
+            padding-top: 4px;
+            padding-bottom: 4px;
+            font-size: 17px;
+        }
+        .dia{
+            font-size: 30px;
+            position: absolute;
+            background: #eeebe4;
+    transform: translateY(-7px) translateX(0px);
+        }
     </style>
 </head>
 <body>
@@ -334,7 +370,7 @@
     <section id="section2" >
         <div class="invitation-container ">
             <div class="card">
-                <div style="width: 100%; color: #311b10; padding: 10px;" data-aos="fade-right">
+                <div style="width: 100%; color: #fff; padding: 10px;" data-aos="fade-right">
                     <p style="font-size: 30px;">En compañía de nuestros padres</p>  
                         <div style="display: flex; justify-content: start;">
                             <div>
@@ -353,17 +389,25 @@
                 </div>
                 
             </div>
+            <div class="fondo2">
+                <img class="imgFondo2" src="./img/fondo2.jpeg" alt="">
+                <div class="contador" id="countdown">
+                            
+                </div>
+            </div>
+            
             <div class="imgFon">
               
                 <div style=" transform: translateX(-4vw) translateY(-2vh); color: #653720;
     width: 70%;" data-aos="fade-down">
                     <br>
                     <div>Nuestro día</div><br>
-                    <div style="font-size: 25px;">Sábado 09 de Noviembre, 2024</div><br>
-                    <div id="countdown">
-                            
-                        </div>
-                    <div></div>
+                   
+                    <div style="width: 95%; justify-content: center;" class="centro">
+                        <div style="width: 75%;" class="bordes">NOVIEMBRE</div>
+                        <div style="width: 20%;" class="dia">9</div>
+                        <div style="width: 100%;" class="bordes">2024</div>
+                    </div>
                 </div>
                
             </div>
@@ -378,7 +422,7 @@
             <div class="lineatiempo" style="
     position: absolute;
     width: 2px;
-    height: 550px;
+    height: 730px;
     background: gray;
     left: 8vh;
     z-index: 1;
@@ -417,6 +461,18 @@
                         <div class="fon" >
                             <p>Cena</p>
                             <p>21:00 Horas</p>
+                            <p>Salón Club de leones <span style="cursor: pointer; font-size: 20px;" onclick="abrirMapa()" class="mdi mdi-map-marker"></span></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-content centro">
+                    <div data-aos="fade-right" class="itine"><span class="mdi mdi-party-popper iconIti"></span></div>
+                    <div class="txtIti" style="font-size: 20px;" data-aos="fade-down">
+                        <div class="fon" >
+                            <p>Baile</p>
+                            <p>23:00 Horas</p>
                             <p>Salón Club de leones <span style="cursor: pointer; font-size: 20px;" onclick="abrirMapa()" class="mdi mdi-map-marker"></span></p>
                         </div>
                     </div>
