@@ -10,7 +10,7 @@
         height: 90vh;
         width: 100vw;
         display: flex;
-        justify-content: center;
+        justify-content: space-around;
         align-items: center;
         text-align: center;
     }
@@ -19,6 +19,7 @@
         bottom: 0;
         left: 0;
         width: 50%;
+        z-index: 999;
     }
     .hoja2{
         position: absolute;
@@ -26,6 +27,23 @@
         right: 0;
         width: 50%;
         transform: rotate(180deg);
+        z-index: 999;
+    }
+    .hoja3{
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 50%;
+        transform:  rotateX(180deg);
+        z-index: 999;
+    }
+    .hoja4{
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        width: 50%;
+        transform: rotate(180deg) rotateX(180deg);
+        z-index: 999;
     }
     .rombo{
         position: absolute;
@@ -64,13 +82,19 @@
         <div class="hoja2">
             <img width="100%" src="./img/hooja.png" alt="">
         </div>
+        <div class="hoja3">
+            <img width="100%" src="./img/hooja.png" alt="">
+        </div>
+        <div class="hoja4">
+            <img width="100%" src="./img/hooja.png" alt="">
+        </div>
         <div class="rombo"></div>
         <div class="rombo2"></div>
         <div class="rombo3"></div>
         <div>
             <div>
-                <h1>Despedida de Soltera</h1>
-                <h2>Alma</h2>
+                <h2>Despedida de Soltera</h2>
+                <h1>Alma</h1>
                 <h3>Domingo 29 de Septiembre</h3>
                 <h3>16:00 horas</h3>
                 <h3>Lugar de la Despedida</h3>
