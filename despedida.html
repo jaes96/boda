@@ -9,6 +9,10 @@
     .carta{
         height: 100vh;
         width: 100vw;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
     }
     .hoja1{
         position: absolute;
@@ -23,6 +27,34 @@
         width: 50%;
         transform: rotate(180deg);
     }
+    .rombo{
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 80vw;
+        height: 70vh;
+        border: 1px solid #cfa64d;
+    }
+    .rombo2{
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%) rotate(10deg);
+        width: 80vw;
+        height: 70vh;
+        border: 1px solid #cfa64d;
+ 
+    }
+    .rombo3{
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%) rotate(-10deg);
+        width: 80vw;
+        height: 70vh;
+        border: 1px solid #cfa64d;
+    }
 </style>
 <body>
     <div class="carta">
@@ -32,8 +64,17 @@
         <div class="hoja2">
             <img width="100%" src="./img/hooja.png" alt="">
         </div>
-        <div class="rombo">
-            
+        <div class="rombo"></div>
+        <div class="rombo2"></div>
+        <div class="rombo3"></div>
+        <div>
+            <div>
+                <h1>Despedida de Soltera</h1>
+                <h2>Alma</h2>
+                <h3>Domingo 29 de Septiembre</h3>
+                <h3>16:00 horas</h3>
+                <h3>Lugar de la Despedida</h3>
+            </div>
         </div>
     </div>
     
