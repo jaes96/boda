@@ -4,100 +4,78 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/@mdi/font@7.x/css/materialdesignicons.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
 </head>
 <style>
     .carta{
-        height: 90vh;
+        height: 100vh;
         width: 100vw;
         display: flex;
         justify-content: space-around;
         align-items: center;
         text-align: center;
+        color: #62645f;
     }
-    .hoja1{
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        width: 50%;
-        z-index: 999;
-    }
-    .hoja2{
-        position: absolute;
-        top: 0;
-        right: 0;
-        width: 50%;
-        transform: rotate(180deg);
-        z-index: 999;
-    }
-    .hoja3{
+    .carta img {
+        height: 100%;
         position: absolute;
         top: 0;
         left: 0;
-        width: 50%;
-        transform:  rotateX(180deg);
-        z-index: 999;
+        width: 100%;
     }
-    .hoja4{
-        position: absolute;
-        bottom: 0;
-        right: 0;
-        width: 50%;
-        transform: rotate(180deg) rotateX(180deg);
-        z-index: 999;
+    h1{
+        font-family: "Dancing Script", cursive;
+        font-size: 60px;
     }
-    .rombo{
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        width: 80vw;
-        height: 70vh;
-        border: 1px solid #cfa64d;
+    .contenido {
+        position: relative;
+        z-index: 9999;
     }
-    .rombo2{
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%) rotate(10deg);
-        width: 80vw;
-        height: 70vh;
-        border: 1px solid #cfa64d;
- 
-    }
-    .rombo3{
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%) rotate(-10deg);
-        width: 80vw;
-        height: 70vh;
-        border: 1px solid #cfa64d;
-    }
+    .parent {
+        color: #ab4c26;
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        grid-template-rows: repeat(5, 1fr);
+        grid-column-gap: 0px;
+        grid-row-gap: 0px;
+        }
+
+        .div1 { grid-area: 1 / 1 / 2 / 3; border-bottom: 2px solid gray; padding: 5px;}
+        .div2 { grid-area: 2 / 1 / 3 / 3; padding: 5px;}
+        .div3 { grid-area: 1 / 3 / 3 / 4; padding: 5px; background: pink;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    width: 90%;
+    position: relative;}
+        .div4 { grid-area: 2 / 4 / 3 / 6; padding: 5px;}
+        .div5 { grid-area: 1 / 4 / 2 / 6; border-bottom: 2px solid gray; padding: 5px; }
 </style>
 <body>
     <div class="carta">
-        <div class="hoja1">
-            <img width="100%" src="./img/hooja.png" alt="">
-        </div>
-        <div class="hoja2">
-            <img width="100%" src="./img/hooja.png" alt="">
-        </div>
-        <div class="hoja3">
-            <img width="100%" src="./img/hooja.png" alt="">
-        </div>
-        <div class="hoja4">
-            <img width="100%" src="./img/hooja.png" alt="">
-        </div>
-        <div class="rombo"></div>
-        <div class="rombo2"></div>
-        <div class="rombo3"></div>
-        <div>
+        <img src="./img/flores.jpg" alt="">
+        <div class="contenido">
+            <h3>Despedida de soltera en honor a:</h3>
+            <h1 style="color: #ab4c26;">ALMA</h1>
+            <div class="parent">
+                <div class="div1">Domingo</div>
+                <div class="div2">4:00PM</div>
+                <div class="div3">29</div>
+                <div class="div4">2024</div>
+                <div class="div5">Septiembre</div>
+            </div>
             <div>
-                <h2>Despedida de Soltera</h2>
-                <h1>Alma</h1>
-                <h3>Domingo 29 de Septiembre</h3>
-                <h3>16:00 horas</h3>
-                <h3>Lugar de la Despedida</h3>
+                Lugar: Palapa de NOYDI
+            </div>
+            <div>
+                Agustín Yáñez 606, Norte,<br> 47252 Villa Hidalgo, Jal.
             </div>
         </div>
     </div>
