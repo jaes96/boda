@@ -21,14 +21,12 @@
         width: 100vw;
         display: flex;
         justify-content: space-around;
-        
         text-align: center;
         color: #62645f;
     }
     .carta img {
-        
         position: absolute;
-        bottom: 0;
+        bottom: 16%;
         left: 0;
         width: 100%;
     }
@@ -92,27 +90,41 @@
                 transform:  scale(1); /* Tamaño original (de nuevo) */
             }
         }
+        .container {
+            Display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 95vh;
+        }
 </style>
 <body>
     <div class="carta">
         <img src="./img/flores2.avif" alt="">
         <div class="contenido">
-            <h3>Despedida de soltera en honor a:</h3>
-            <h1 style="color: #ab4c26;">ALMA</h1>
-            <div class="parent">
-                <div class="div1">Domingo</div>
-                <div class="div2">4:00PM</div>
-                <div class="div3">29</div>
-                <div class="div4">2024</div>
-                <div class="div5">Septiembre</div>
+            <div class="container">
+                <div>
+                    <h3>Despedida de soltera en honor a:</h3>
+                    <h1 style="color: #ab4c26;">ALMA</h1>
+                    <div class="parent">
+                        <div class="div1">Domingo</div>
+                        <div class="div2">4:00PM</div>
+                        <div class="div3">29</div>
+                        <div class="div4">2024</div>
+                        <div class="div5">Septiembre</div>
+                    </div>
+                </div>
+                <div>
+                    <div>
+                        Lugar: Palapa de NOYDI
+                    </div>
+                    <div>
+                        Agustín Yáñez 606, Norte,<br> 47252 Villa Hidalgo, Jal.
+                    </div>
+                    <div><span style="cursor: pointer; font-size: 30px;" onclick="abrirMapaIgl()" class="mdi mdi-map-marker mapa"></span></div>
+                        </div>
             </div>
-            <div>
-                Lugar: Palapa de NOYDI
-            </div>
-            <div>
-                Agustín Yáñez 606, Norte,<br> 47252 Villa Hidalgo, Jal.
-            </div>
-            <div><span style="cursor: pointer; font-size: 30px;" onclick="abrirMapaIgl()" class="mdi mdi-map-marker mapa"></span></div>
+            
+            
         </div>
     </div>
     
