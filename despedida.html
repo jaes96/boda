@@ -75,6 +75,20 @@
         border-bottom: 2px solid gray; 
         padding: 5px; 
     }
+    .mapa {
+        animation: aumentoDisminucion 2s infinite;
+    }
+    @keyframes aumentoDisminucion {
+            0% {
+                transform:  scale(1); /* Tamaño original */
+            }
+            50% {
+                transform:  scale(1.1); /* Tamaño aumentado (150%) */
+            }
+            100% {
+                transform:  scale(1); /* Tamaño original (de nuevo) */
+            }
+        }
 </style>
 <body>
     <div class="carta">
@@ -95,8 +109,14 @@
             <div>
                 Agustín Yáñez 606, Norte,<br> 47252 Villa Hidalgo, Jal.
             </div>
+            <div><span style="cursor: pointer; font-size: 30px;" onclick="abrirMapaIgl()" class="mdi mdi-map-marker mapa"></span></div>
         </div>
     </div>
     
 </body>
 </html>
+<script type="text/javascript">
+    function abrirMapaIgl(){
+        window.open("https://www.google.com/maps/place/Jard%C3%ADn+NOYDI/@21.6842037,-102.5861289,18z/data=!4m6!3m5!1s0x8429b982c464d1b1:0x552ad46261ae6386!8m2!3d21.6842037!4d-102.5848781!16s%2Fg%2F11kqlt1rql?entry=ttu");
+    }
+</script>
