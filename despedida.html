@@ -18,7 +18,8 @@
     body{
         font-family: 'Montserrat', sans-serif;
         margin: 0;
-        background: #80808052;
+        background: #66758857;
+
     }
     .carta{
         
@@ -26,10 +27,10 @@
         display: flex;
         justify-content: space-around;
         text-align: center;
-        color: #62645f;
+        color: #653720;
     }
     .carta img {
-        filter: drop-shadow(20px 20px 0px rgba(0, 0, 0, 0.4));
+        filter: drop-shadow(20px 20px 0px rgba(0, 0, 0, 0.1));
           width: 83%;
           left: 7%;
           bottom: 22%;
@@ -38,13 +39,14 @@
     h1{
         font-family: "Dancing Script", cursive;
         font-size: 60px;
+        color: #653720;
     }
     .contenido {
         position: relative;
         z-index: 9999;
     }
     .parent {
-        color: #ab4c26;
+        color: #653720;
         display: grid;
         grid-template-columns: repeat(5, 1fr);
         grid-template-rows: repeat(3, 1fr);
@@ -64,7 +66,7 @@
     .div3 { 
         grid-area: 1 / 3 / 3 / 4; 
         padding: 5px; 
-        background: #ffa396;
+        background: #ac4c26a3;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -82,14 +84,14 @@
         padding: 5px; 
     }
     .mapa {
-        animation: aumentoDisminucion 2s infinite;
+        animation: aumentoDisminucion 1.5s infinite;
     }
     @keyframes aumentoDisminucion {
             0% {
                 transform:  scale(1); /* Tamaño original */
             }
             50% {
-                transform:  scale(1.1); /* Tamaño aumentado (150%) */
+                transform:  scale(1.3); /* Tamaño aumentado (150%) */
             }
             100% {
                 transform:  scale(1); /* Tamaño original (de nuevo) */
@@ -99,7 +101,9 @@
             Display: flex;
   flex-direction: column;
   justify-content: space-around;
-  height: 95vh;
+  height: 100vh;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+  padding: 10px;
         }
 </style>
 <body>
@@ -109,7 +113,7 @@
             <div class="container">
                 <div>
                     <h3>Despedida de soltera en honor a:</h3>
-                    <h1 style="color: #ab4c26;">Alma</h1>
+                    <h1 style="color: #ab4c26;">Alma María</h1>
                     <div class="parent">
                         <div class="div1">Domingo</div>
                         <div class="div2">4:00PM</div>
@@ -122,13 +126,14 @@
                     <img src="./img/flores2.png" alt="">
                 </div>
                 <div>
+                    <div class="mapa"><span style="cursor: pointer; font-size: 30px;" onclick="abrirMapaIgl()" class="mdi mdi-map-marker mapa"></span></div>
                     <div>
                         Lugar: Palapa de NOYDI
                     </div>
                     <div>
                         Agustín Yáñez 606, Norte,<br> 47252 Villa Hidalgo, Jal.
                     </div>
-                    <div><span style="cursor: pointer; font-size: 30px;" onclick="abrirMapaIgl()" class="mdi mdi-map-marker mapa"></span></div>
+                    
                         </div>
             </div>
             
