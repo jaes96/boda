@@ -71,6 +71,7 @@
     #countdown {
         font-size: 20px;
         display: flex;
+        gap: 7px;
     }
     .titulo{
         
@@ -319,7 +320,7 @@
         }
         .contador {
             position: absolute;
-            top: 50%;
+            top: 100%;
             left: 50%;
             transform: translate(-50%, -50%);
             color: white;
@@ -346,6 +347,13 @@
         }
         .tiempo{
             background: #000;
+            padding: 5px;
+            width: 15vw;
+            
+        }
+        .line{
+            border: 1px solid white;
+            padding: 5px;
         }
     </style>
 </head>
@@ -422,10 +430,10 @@
                 <img class="imgFondo2" src="./img/fondo2.jpeg" alt="">
                 <div class="contador" >
                     <div id="countdown">
-                        <div class="tiempo"><div id="days">00</div><div> Días</div></div>
-                        <div class="tiempo"><div id="hours">00</div><div> Horas</div></div>
-                        <div class="tiempo"><div id="minutes">00</div><div> Minutos</div></div>
-                        <div class="tiempo"><div id="seconds">00</div><div> Segundos</div></div>
+                        <div class="tiempo"><div class="line"><div id="days">00</div><div style="font-size: 14px;"> Días</div></div></div>
+                        <div class="tiempo"><div class="line"><div id="hours">00</div><div style="font-size: 14px;"> Horas</div></div></div>
+                        <div class="tiempo"><div class="line"><div id="minutes">00</div><div style="font-size: 14px;"> Minutos</div></div></div>
+                        <div class="tiempo"><div class="line"><div id="seconds">00</div><div style="font-size: 14px;"> Segundos</div></div></div>
                     </div>
                 </div>
             </div>
