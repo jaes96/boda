@@ -1,17 +1,320 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Celebra Nuestro Amor | María & Juan</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            font-family: 'Lato', sans-serif;
+            color: #333;
+            line-height: 1.6;
+            background-color: #f8f8f8;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 40px auto;
+            background-color: #fff;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        header {
+            background-image: url('/api/placeholder/1200/600');
+            background-size: cover;
+            background-position: center;
+            height: 600px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .header-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.4);
+        }
+        .header-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            color: #fff;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 1s ease-out 0.5s forwards;
+        }
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        h1, h2, h3 {
+            font-family: 'Playfair Display', serif;
+            margin: 0;
+        }
+        h1 {
+            font-size: 64px;
+            margin-bottom: 20px;
+        }
+        h2 {
+            font-size: 36px;
+            font-weight: normal;
+        }
+        .section {
+            padding: 80px 60px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .section-title {
+            font-size: 42px;
+            color: #2c3e50;
+            margin-bottom: 40px;
+            position: relative;
+        }
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 3px;
+            background-color: #d4af37;
+            margin: 20px auto 0;
+        }
+        .couple-photos {
+            display: flex;
+            justify-content: space-around;
+            margin-bottom: 40px;
+        }
+        .photo {
+            width: 250px;
+            height: 250px;
+            border-radius: 50%;
+            object-fit: cover;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        .photo:hover {
+            transform: scale(1.05);
+        }
+        .timeline {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            margin-top: 40px;
+        }
+        .event {
+            width: 30%;
+            margin-bottom: 30px;
+            padding: 20px;
+            background-color: #f9f9f9;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .event:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        .event-icon {
+            font-size: 48px;
+            margin-bottom: 15px;
+        }
+        .map {
+            height: 400px;
+            background-color: #e9e9e9;
+            margin-top: 40px;
+            border-radius: 10px;
+        }
+        .accommodation {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            margin-top: 40px;
+        }
+        .hotel {
+            width: 30%;
+            margin-bottom: 30px;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 1s ease-out forwards;
+        }
+        .hotel:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+        .hotel:nth-child(3) {
+            animation-delay: 0.4s;
+        }
+        .hotel img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-bottom: 15px;
+            transition: transform 0.3s ease;
+        }
+        .hotel img:hover {
+            transform: scale(1.05);
+        }
+        .gifts {
+            background-color: #f9f9f9;
+        }
+        .faq {
+            background-color: #fff;
+        }
+        .question {
+            background-color: #f9f9f9;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            text-align: left;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .question:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        .question h4 {
+            margin-top: 0;
+            color: #2c3e50;
+        }
+        @media (max-width: 768px) {
+            .section {
+                padding: 40px 20px;
+            }
+            .couple-photos {
+                flex-direction: column;
+                align-items: center;
+            }
+            .photo {
+                margin-bottom: 20px;
+            }
+            .event, .hotel {
+                width: 100%;
+            }
+        }
+    </style>
 </head>
-<style>
-    
-    .img{
-        width: 100%;
-    }
-</style>
 <body>
-    <img class="img" src="./img/despedida.png" alt="">
+    <div class="container">
+        <header>
+            <div class="header-overlay"></div>
+            <div class="header-content">
+                <h1>María & Juan</h1>
+                <h2>Celebra Nuestro Amor</h2>
+                <p>15 de octubre de 2024 | Madrid, España</p>
+            </div>
+        </header>
+
+        <section class="section">
+            <h3 class="section-title">Nuestra Historia</h3>
+            <div class="couple-photos">
+                <img src="/api/placeholder/250/250" alt="María" class="photo">
+                <img src="/api/placeholder/250/250" alt="Juan" class="photo">
+            </div>
+            <p>Nos conocimos hace 5 años en un café del centro de Madrid. Desde ese momento, nuestras vidas se entrelazaron en una hermosa historia de amor. Hemos compartido risas, aventuras y sueños, y ahora queremos dar el siguiente paso juntos. Nos llena de alegría poder compartir este momento tan especial con nuestros seres queridos.</p>
+        </section>
+
+        <section class="section">
+            <h3 class="section-title">Detalles de la Boda</h3>
+            <p><strong>Fecha:</strong> Sábado, 15 de octubre de 2024</p>
+            <p><strong>Lugar:</strong> Palacio Real de Madrid, Calle de Bailén, s/n, 28071 Madrid</p>
+            <div class="timeline">
+                <div class="event">
+                    <div class="event-icon">💒</div>
+                    <h4>Ceremonia</h4>
+                    <p>18:00 - 19:00</p>
+                    <p>La ceremonia se llevará a cabo en la majestuosa Capilla Real.</p>
+                </div>
+                <div class="event">
+                    <div class="event-icon">🥂</div>
+                    <h4>Cóctel</h4>
+                    <p>19:00 - 20:30</p>
+                    <p>Disfruta de exquisitos aperitivos y champagne en los Jardines del Campo del Moro.</p>
+                </div>
+                <div class="event">
+                    <div class="event-icon">🍽️</div>
+                    <h4>Cena</h4>
+                    <p>20:30 - 22:30</p>
+                    <p>Una cena gourmet en el Salón de Columnas del Palacio Real.</p>
+                </div>
+                <div class="event">
+                    <div class="event-icon">💃</div>
+                    <h4>Baile</h4>
+                    <p>22:30 - 03:00</p>
+                    <p>Baila toda la noche con música en vivo y DJ en el elegante Salón del Trono.</p>
+                </div>
+            </div>
+            <div class="map">
+                <p>Mapa de ubicación</p>
+                <!-- Aquí iría un mapa interactivo -->
+            </div>
+        </section>
+
+        <section class="section">
+            <h3 class="section-title">Alojamiento</h3>
+            <p>Para nuestros distinguidos invitados, hemos seleccionado los siguientes hoteles de lujo con tarifas especiales:</p>
+            <div class="accommodation">
+                <div class="hotel">
+                    <img src="/api/placeholder/300/200" alt="Hotel Ritz Madrid">
+                    <h4>Hotel Ritz Madrid</h4>
+                    <p>Lujo incomparable a 5 minutos del Palacio Real</p>
+                    <p>Tarifa especial: 350€/noche</p>
+                </div>
+                <div class="hotel">
+                    <img src="/api/placeholder/300/200" alt="Gran Meliá Palacio de los Duques">
+                    <h4>Gran Meliá Palacio de los Duques</h4>
+                    <p>Elegancia histórica a 10 minutos del lugar de la boda</p>
+                    <p>Tarifa especial: 280€/noche</p>
+                </div>
+                <div class="hotel">
+                    <img src="/api/placeholder/300/200" alt="The Principal Madrid">
+                    <h4>The Principal Madrid</h4>
+                    <p>Sofisticación urbana en el corazón de Madrid</p>
+                    <p>Tarifa especial: 220€/noche</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section gifts">
+            <h3 class="section-title">Lista de Regalos</h3>
+            <p>Su presencia en nuestra boda es el mejor regalo que podríamos recibir. Sin embargo, para aquellos que deseen obsequiarnos algo, hemos creado una lista de regalos exclusiva en:</p>
+            <p><strong>www.bodarealmariayjuan.com/regalos</strong></p>
+            <p>También apreciaríamos contribuciones a nuestro fondo para luna de miel de ensueño, si lo prefieren.</p>
+        </section>
+
+        <section class="section faq">
+            <h3 class="section-title">Preguntas Frecuentes</h3>
+            <div class="question">
+                <h4>¿Cuál es el código de vestimenta?</h4>
+                <p>El código de vestimenta es etiqueta. Sugerimos esmoquin o traje oscuro para los caballeros y vestido de gala para las damas.</p>
+            </div>
+            <div class="question">
+                <h4>¿Habrá servicio de aparcacoches?</h4>
+                <p>Sí, contaremos con un servicio de aparcacoches de lujo para todos nuestros invitados.</p>
+            </div>
+            <div class="question">
+                <h4>¿Puedo llevar a mis hijos?</h4>
+                <p>Aunque adoramos a los niños, nuestra boda será un evento exclusivo para adultos. Agradecemos su comprensión.</p>
+            </div>
+            <div class="question">
+                <h4>¿Qué hago si tengo restricciones dietéticas?</h4>
+                <p>Por favor, infórmenos de cualquier restricción dietética o alergia alimentaria. Nuestro chef estrella Michelin se asegurará de preparar opciones gourmet adecuadas para todos.</p>
+            </div>
+        </section>
+
+        <section class="section">
+            <h3 class="section-title">¡Esperamos celebrar contigo!</h3>
+            <p>Si tienes alguna pregunta adicional, nuestro equipo de organización está a tu disposición:</p>
+            <p>Email: concierge@bodarealmariayjuan.com</p>
+            <p>Teléfono: +34 900 123 456</p>
+        </section>
+    </div>
 </body>
 </html>
