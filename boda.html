@@ -22,7 +22,7 @@
         body{
             overflow-x: hidden;
             background: rgb(245,238,232);
-            background: linear-gradient(313deg, rgba(245,238,232,1) 0%, rgba(234,224,212,1) 100%);
+            
         }
         section {
            
@@ -34,7 +34,7 @@
         #section1{
             height: 100%;
         }
-       
+        #section2{}
         #section3 {
             
             padding: 10px;
@@ -66,10 +66,67 @@
             filter: contrast(0.6) brightness(0.6);
     }
     #countdown {
-        font-size: 20px;
-        display: flex;
-        gap: 7px;
-    }
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            font-family: 'Arial', sans-serif;
+        }
+
+        .tiempo {
+            text-align: center;
+            font-size: 30px;
+            position: relative;
+            width: 80px;
+            height: 80px;
+            perspective: 500px; /* Para dar el efecto 3D */
+        }
+
+        .line {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            width: 100%;
+            height: 50%;
+            background-color: #f0f0f0;
+            border-radius: 10px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: bold;
+            color: #333;
+            backface-visibility: hidden;
+            transition: transform 0.6s ease;
+        }
+
+        .line .label {
+            color: #666;
+            position: absolute;
+            top: 105%;
+            text-align: center;
+            width: 100%;
+        }
+
+        /* Parte superior (antes del flip) */
+        .line.upper {
+            transform-origin: bottom;
+        }
+
+        /* Parte inferior (después del flip) */
+        .line.lower {
+    visibility: hidden;
+    transform: rotateX(90deg); /* Establecer una rotación inicial para la parte inferior */
+}
+
+/* Efecto de animación (flip) */
+.tiempo.flip .upper {
+   /* transform: rotateX(-180deg);*/
+}
+
+.tiempo.flip .lower {
+    visibility: visible;
+    transform: rotateX(0deg);
+}
     .titulo{
         
         width: 100%;
@@ -305,7 +362,6 @@
         }
         .fondo2{
             width: 100vw;
-            height: 30vh;
             margin-bottom: 15vh;
             position: relative;
             display: flex;
@@ -317,7 +373,7 @@
         }
         .contador {
             position: absolute;
-            top: 100%;
+            top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
             color: white;
@@ -341,16 +397,6 @@
         }
         .novios{
             letter-spacing: 5px;
-        }
-        .tiempo{
-            background: #000;
-            padding: 5px;
-            width: 15vw;
-            
-        }
-        .line{
-            border: 1px solid white;
-            padding: 5px;
         }
     </style>
 </head>
@@ -393,14 +439,16 @@
     <section id="section2" >
         <div class="invitation-container ">
             <div class="card">
-                <div style="width: 100%;
+                <div data-aos="fade-up" style="width: 90%;
                 color: #fff;
                 margin: 10px;
                 border: 1px solid #0000001f;
                 padding: 10px;
-                border-radius: 10%;
+                border-radius: 1%;
                 box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;
-                color: #653720;" >
+                color: #653720;
+                transform: translateY(-10vh);
+                background: #fff;" >
                     <div data-aos="fade-right">
                        
                     <p style="font-size: 30px;">En compañía de nuestros padres</p>  
@@ -418,6 +466,18 @@
                                 </div>
                         </div>
                     </div>
+                    <div data-aos="fade-up">
+                       
+                        <p style="font-size: 30px;">Padrinos</p>  
+                        <div style="display: flex; justify-content: center;">
+                            <div>
+                                <p>Gustavo Delgadillo</p>
+                            <p>Tere Gómez</p>
+                            </div>
+                            
+                        </div>
+                        
+                    </div>
                     
                    
                 </div>
@@ -426,11 +486,34 @@
             <div class="fondo2">
                 <img class="imgFondo2" src="./img/fondo2.jpeg" alt="">
                 <div class="contador" >
-                    <div id="countdown">
+                    <h2>FALTAN</h2>
+                    <!--<div id="countdown">
                         <div class="tiempo"><div class="line"><div id="days">00</div><div style="font-size: 14px;"> Días</div></div></div>
                         <div class="tiempo"><div class="line"><div id="hours">00</div><div style="font-size: 14px;"> Horas</div></div></div>
                         <div class="tiempo"><div class="line"><div id="minutes">00</div><div style="font-size: 14px;"> Minutos</div></div></div>
                         <div class="tiempo"><div class="line"><div id="seconds">00</div><div style="font-size: 14px;"> Segundos</div></div></div>
+                    </div>-->
+                    <div id="countdown">
+                        <div class="tiempo" id="days-box" data-value="00">
+                            <div class="line upper" id="days-upper">00</div>
+                            <div class="line lower" id="days-lower">00</div>
+                            <div class="label" style="font-size: 14px;">Días</div>
+                        </div>
+                        <div class="tiempo" id="hours-box" data-value="00">
+                            <div class="line upper" id="hours-upper">00</div>
+                            <div class="line lower" id="hours-lower">00</div>
+                            <div class="label" style="font-size: 14px;">Horas</div>
+                        </div>
+                        <div class="tiempo" id="minutes-box" data-value="00">
+                            <div class="line upper" id="minutes-upper">00</div>
+                            <div class="line lower" id="minutes-lower">00</div>
+                            <div class="label" style="font-size: 14px;">Minutos</div>
+                        </div>
+                        <div class="tiempo" id="seconds-box" data-value="00">
+                            <div class="line upper" id="seconds-upper">00</div>
+                            <div class="line lower" id="seconds-lower">00</div>
+                            <div class="label" style="font-size: 14px;">Segundos</div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -466,7 +549,7 @@
     width: 2px;
     height: 730px;
     background: gray;
-    left: 15%;
+    left: 19%;
     z-index: 1;
 "></div>
             <div class="timeline-item" >
@@ -536,51 +619,55 @@
             easing: 'ease-in-out',
         });
         // Fecha objetivo
-        var targetDate = new Date("2024-11-09T19:00:00").getTime();
-        var now = new Date().getTime();
-            var distance = targetDate - now;
+        const targetDate = new Date('2024-11-09T15:59:59').getTime();
 
-            // Cálculo de días, horas, minutos y segundos
-            var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-            var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-            var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+    const updateCountdown = () => {
+        const now = new Date().getTime();
+        const distance = targetDate - now;
 
-            // Mostrar la cuenta regresiva en el label
-           // $("#countdown").text(" " + days + " d " + hours + " h " + minutes + " m " + seconds + " s");
-         // Actualizar el contenido de cada div
-            $("#days").text(days);
-            $("#hours").text(hours);
-            $("#minutes").text(minutes);
-            $("#seconds").text(seconds );
-            // Si la cuenta regresiva ha terminado
-            if (distance < 0) {
-                clearInterval(countdown);
-                $("#countdown").text("¡La boda ha comenzado!");
-            }
-        // Actualizar la cuenta regresiva cada 1 segundo
-        var countdown = setInterval(function() {
-            var now = new Date().getTime();
-            var distance = targetDate - now;
+        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-            // Cálculo de días, horas, minutos y segundos
-            var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-            var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-            var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+        flip(document.getElementById('days-box'), days);
+        flip(document.getElementById('hours-box'), hours);
+        flip(document.getElementById('minutes-box'), minutes);
+        flip(document.getElementById('seconds-box'), seconds);
 
-            // Mostrar la cuenta regresiva en el label
-            //$("#countdown").text(" " + days + " d " + hours + " h " + minutes + " m " + seconds + " s ");
-            $("#days").text(days);
-            $("#hours").text(hours);
-            $("#minutes").text(minutes);
-            $("#seconds").text(seconds );
-            // Si la cuenta regresiva ha terminado
-            if (distance < 0) {
-                clearInterval(countdown);
-                $("#countdown").text("¡La boda ha comenzado!");
-            }
-        }, 1000);
+        // Cuando llegue a 0
+        if (distance < 0) {
+            clearInterval(interval);
+            document.getElementById('days-upper').innerHTML = '00';
+            document.getElementById('hours-upper').innerHTML = '00';
+            document.getElementById('minutes-upper').innerHTML = '00';
+            document.getElementById('seconds-upper').innerHTML = '00';
+        }
+    };
+
+    const flip = (element, value) => {
+    const upper = element.querySelector('.upper');
+    const lower = element.querySelector('.lower');
+    
+    const previousValue = element.getAttribute('data-value');
+    
+    // Solo realiza el flip si el valor realmente ha cambiado
+    if (previousValue !== value.toString()) {
+        element.setAttribute('data-value', value); // Almacena el nuevo valor
+
+        upper.innerHTML = previousValue < 10 ? '0' + previousValue : previousValue;
+        lower.innerHTML = value < 10 ? '0' + value : value;
+
+        element.classList.add('flip');
+        setTimeout(() => {
+            element.classList.remove('flip');
+            upper.innerHTML = value < 10 ? '0' + value : value; // Actualiza al nuevo valor una vez completado el flip
+        }, 600); // Duración del flip
+    }
+};
+
+    // Actualiza el contador cada segundo
+    const interval = setInterval(updateCountdown, 1000);
     });
     function abrir(){
 

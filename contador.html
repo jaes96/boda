@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        #countdown {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            font-family: 'Arial', sans-serif;
+        }
+
+        .tiempo {
+            text-align: center;
+            font-size: 30px;
+            position: relative;
+            width: 100px;
+            height: 120px;
+            perspective: 500px; /* Para dar el efecto 3D */
+        }
+
+        .line {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            width: 100%;
+            height: 50%;
+            background-color: #f0f0f0;
+            border-radius: 10px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: bold;
+            font-size: 40px;
+            color: #333;
+            backface-visibility: hidden;
+            transition: transform 0.6s ease;
+        }
+
+        .line .label {
+            font-size: 14px;
+            color: #666;
+            position: absolute;
+            top: 105%;
+            text-align: center;
+            width: 100%;
+        }
+
+        /* Parte superior (antes del flip) */
+        .line.upper {
+            transform-origin: bottom;
+        }
+
+        /* Parte inferior (después del flip) */
+        .line.lower {
+    visibility: hidden;
+    transform: rotateX(90deg); /* Establecer una rotación inicial para la parte inferior */
+}
+
+/* Efecto de animación (flip) */
+.tiempo.flip .upper {
+   /* transform: rotateX(-180deg);*/
+}
+
+.tiempo.flip .lower {
+    visibility: visible;
+    transform: rotateX(0deg);
+}
+    </style>
+</head>
+<body>
+
+<div id="countdown">
+    <div class="tiempo" id="days-box">
+        <div class="line upper" id="days-upper">00</div>
+        <div class="line lower" id="days-lower">00</div>
+        <div class="label">Días</div>
+    </div>
+    <div class="tiempo" id="hours-box">
+        <div class="line upper" id="hours-upper">00</div>
+        <div class="line lower" id="hours-lower">00</div>
+        <div class="label">Horas</div>
+    </div>
+    <div class="tiempo" id="minutes-box">
+        <div class="line upper" id="minutes-upper">00</div>
+        <div class="line lower" id="minutes-lower">00</div>
+        <div class="label">Minutos</div>
+    </div>
+    <div class="tiempo" id="seconds-box">
+        <div class="line upper" id="seconds-upper">00</div>
+        <div class="line lower" id="seconds-lower">00</div>
+        <div class="label">Segundos</div>
+    </div>
+</div>
+
+<script>
+    // Fecha objetivo
+    const targetDate = new Date('2024-12-31T23:59:59').getTime();
+
+    const updateCountdown = () => {
+        const now = new Date().getTime();
+        const distance = targetDate - now;
+
+        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+        flip(document.getElementById('days-box'), days);
+        flip(document.getElementById('hours-box'), hours);
+        flip(document.getElementById('minutes-box'), minutes);
+        flip(document.getElementById('seconds-box'), seconds);
+
+        // Cuando llegue a 0
+        if (distance < 0) {
+            clearInterval(interval);
+            document.getElementById('days-upper').innerHTML = '00';
+            document.getElementById('hours-upper').innerHTML = '00';
+            document.getElementById('minutes-upper').innerHTML = '00';
+            document.getElementById('seconds-upper').innerHTML = '00';
+        }
+    };
+
+    const flip = (element, value) => {
+        const upper = element.querySelector('.upper');
+        const lower = element.querySelector('.lower');
+
+        if (upper.innerHTML !== value.toString()) {
+            upper.innerHTML = value < 10 ? '0' + value : value;
+            lower.innerHTML = value < 10 ? '0' + value : value;
+
+            element.classList.add('flip');
+            setTimeout(() => {
+                element.classList.remove('flip');
+            }, 600); // Duración del flip
+        }
+    };
+
+    // Actualiza el contador cada segundo
+    const interval = setInterval(updateCountdown, 1000);
+</script>
+
+</body>
+</html>
