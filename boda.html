@@ -373,7 +373,7 @@
         }
         .contador {
             position: absolute;
-            top: 50%;
+            top: 80%;
             left: 50%;
             transform: translate(-50%, -50%);
             color: white;
@@ -398,6 +398,43 @@
         .novios{
             letter-spacing: 5px;
         }
+
+
+        .gallery {
+            column-count: 3; /* 3 columnas */
+            column-gap: 15px;
+            padding: 15px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Estilos para cada imagen en la galería */
+        .gallery img {
+            width: 100%;
+            height: auto;
+            margin-bottom: 15px;
+            border-radius: 10px;
+            transition: transform 0.3s ease;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Efecto hover para hacer zoom */
+        .gallery img:hover {
+            transform: scale(1.05);
+        }
+
+        /* Media queries para adaptar la galería a diferentes tamaños de pantalla */
+        @media (max-width: 1200px) {
+            .gallery {
+                column-count: 2;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .gallery {
+                column-count: 1;
+            }
+        }
     </style>
 </head>
 <body>
@@ -416,7 +453,7 @@
         </div>
     </div>-->
     <section id="section1">
-        <img class="imgFondo" src="img/fondo.jpg" alt="">
+        <img class="imgFondo" src="img/fondoPrincipal.jpeg" alt="">
         <div class="titulo">
            
             <div style="text-align: center; ">
@@ -484,9 +521,8 @@
                 
             </div>
             <div class="fondo2">
-                <img class="imgFondo2" src="./img/fondo2.jpeg" alt="">
+                <img class="imgFondo2" src="./img/fondo.jpeg" alt="">
                 <div class="contador" >
-                    <h2>FALTAN</h2>
                     <!--<div id="countdown">
                         <div class="tiempo"><div class="line"><div id="days">00</div><div style="font-size: 14px;"> Días</div></div></div>
                         <div class="tiempo"><div class="line"><div id="hours">00</div><div style="font-size: 14px;"> Horas</div></div></div>
@@ -539,7 +575,22 @@
             
         </div>
         
-    </section>
+    </section><br>  <br>    
+    <div style="text-align: center;">
+        <h1>Galería</h1>
+
+        <div class="gallery">
+            <img src="./img/5.jpeg" alt="Foto de boda 5">
+            <img src="./img/1.jpeg" alt="Foto de boda 1">
+            <img src="./img/2.jpeg" alt="Foto de boda 2">
+            <img src="./img/3.jpeg" alt="Foto de boda 3">
+            <img src="./img/4.jpeg" alt="Foto de boda 4">
+            
+            <img src="./img/6.jpeg" alt="Foto de boda 6">
+            <img src="./img/7.jpeg" alt="Foto de boda 7">
+            <img src="./img/8.jpeg" alt="Foto de boda 8">
+        </div>
+    </div>
     <section id="section3">
         <div style="text-align: center;">
             <h1 style="color: #653720;">Itinerario</h1>
