@@ -1,5 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,63 +8,172 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/@mdi/font@7.x/css/materialdesignicons.min.css" rel="stylesheet">
-</head>
-<style>
-    body{
-        padding: 0;
-        margin: 0;
-        font-family: "Dancing Script", cursive;
-        font-optical-sizing: auto;
-        font-weight: 400;
-        font-style: normal;
-    }
-    .imgFondo{
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <title>Scroll Snapping</title>
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+            
+           
+            
+        }
+        body{
+            overflow-x: hidden;
+            background: rgb(245,238,232);
+            
+        }
+        section {
+           
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 2em;
+        }
+        #section1{
+            height: 100%;
+        }
+        #section2{}
+        #section3 {
+            
+            padding: 10px;
+        }
+        .itine {
+            width: 100px;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: white;
+    border-radius: 50%;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    position: relative;
+    z-index: 9;
+        }
+        .imgFondo{
         position: absolute;
             top: 0;
             left: 0;
             width: 100%;
-            height: 50%;
+            height: 100%;
             object-fit: cover;
             z-index: -1;
+            filter: contrast(0.6) brightness(0.4);
+    }
+    .imgFondo2{
+       
+            filter: contrast(0.6) brightness(0.6);
     }
     #countdown {
-        margin-bottom: 8vh;
-    }
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            font-family: 'Arial', sans-serif;
+        }
+
+        .tiempo {
+            text-align: center;
+            font-size: 30px;
+            position: relative;
+            width: 80px;
+            height: 80px;
+            perspective: 500px; /* Para dar el efecto 3D */
+        }
+
+        .line {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            width: 100%;
+            height: 50%;
+            background-color: #f0f0f0;
+            border-radius: 10px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: bold;
+            color: #333;
+            backface-visibility: hidden;
+            transition: transform 0.6s ease;
+        }
+
+        .line .label {
+            color: #666;
+            position: absolute;
+            top: 105%;
+            text-align: center;
+            width: 100%;
+        }
+
+        /* Parte superior (antes del flip) */
+        .line.upper {
+            transform-origin: bottom;
+        }
+
+        /* Parte inferior (después del flip) */
+        .line.lower {
+    visibility: hidden;
+    transform: rotateX(90deg); /* Establecer una rotación inicial para la parte inferior */
+}
+
+/* Efecto de animación (flip) */
+.tiempo.flip .upper {
+   /* transform: rotateX(-180deg);*/
+}
+
+.tiempo.flip .lower {
+    visibility: visible;
+    transform: rotateX(0deg);
+}
     .titulo{
-        position: absolute;
-        top: 0;
-        left: 0;
+        
         width: 100%;
-        height: 50%;
         display: flex;
         flex-direction: column;
         justify-content: end;
         align-items: center;
         color: white;
-        background: rgba(0, 0, 0, 0.5); /* Fondo negro semitransparente */
-        
+       /*background: rgba(0, 0, 0, 0.5); /* Fondo negro semitransparente */
+    
     }
    .title{
-    font-size: 2rem;
-    margin-top: 5px;
+    font-size: 2.5rem;
+   
 
    }
-   .espacio{
-    height: 50vh;
-   }
-   .centro{
-        display: flex;
-        justify-content: center;
-   }
-
    .invitation-container {
-            background-color: #1a1a1a;
-            padding-top: 20px;
-            height: 70vh;
+           
             text-align: center;
-            box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+           
             position: relative;
-            color:white;
+            width: 100%;
+        }
+        .imgFon{
+            padding: 10px;
+            height: 60vh;
+            background-image: url('./img/papel3.jpg');
+            color: black;
+            background-size: cover; /* o 'contain' según tu necesidad */
+            background-position: center; /* Ajusta la posición si es necesario */
+            background-repeat: no-repeat; 
+            display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50px;
+    margin-top: 1vh;
+        }
+        .backBlack{
+            background: rgba(0, 0, 0, 0.6);
+            width: 100vw;
+            height: 100%;
+            padding-top: 20px;
+            transform: translateY(-10px);
         }
         .decorative-border {
             position: absolute;
@@ -88,7 +196,7 @@
             font-weight: normal;
         }
         .invitation-container p {
-            font-size: 15px;
+            font-size: 20px;
             margin: 10px 0;
         }
         .date-time {
@@ -101,94 +209,632 @@
             font-size: 12px;
             margin: 10px 0;
         }
-        .bordes{
-            border-top: 1px solid white;
-            border-bottom: 1px solid white;
-            padding-top: 4px;
-            padding-bottom: 4px;
+        .nombre{
+            padding: 20px;
+            
+            border: 1px solid white;
         }
-        .dia{
-            font-size: 30px;
-    position: absolute;
-    background: #1a1a1a;
-    transform: translateY(-5px);
+        
+
+        .nombre {
+            font-size: 24px;
         }
-        section {
+        .cuadro {
+            display: flex;
+            justify-content: center;
+            padding-top: 20px;
+              
+            width: 100%;
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .fecha {
+            position: absolute;
+            transform: translateY(180%);
+    font-size: 25px;
+        }
+        .carta{
+            display: flex;
+            flex-direction: column;
+            position: fixed;
+            width: 100vw;
             height: 100vh;
+            
+            z-index: 999;
+        }
+        .izquierdo{
+            background-color: #fdfdfd;
+            width: 100vw;
+            height: 50vh;
+            z-index: 99999;
+            clip-path: polygon(100% 0, 100% 75%, 50% 100%, 0 75%, 0 0);
+            /*clip-path: polygon(75% 0%, 100% 50%, 75% 100%, 0% 100%, 0 53%, 0% 0%);*/
+            transition: transform 1s ease-out;
+        }
+       
+        .derecho{
+            background-color: #fdfdfd;
+           
+            width: 100vw;
+            height: 50vh;
+            z-index: 9999;
+            /*clip-path: polygon(100% 0, 100% 50%, 100% 100%, 0% 100%, 25% 50%, 0% 0%);
+            /*transform: translateX(-13%) scale(1.5);*/
+            transition: transform 1s ease-out;
+            transform: translateY(-50vh) scale(3);
+        }
+        .caida {
+            position: fixed;
+            width: 100px;
+            height: 100px;
+            background-color: CD7F32;
+            border-radius: 50%;
+            z-index: 999999;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
             display: flex;
             justify-content: center;
             align-items: center;
-            font-size: 2em;
-            scroll-snap-align: start;
+            cursor: pointer;
+            transition: opacity 1s ease-out;
+            box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+            animation: aumentoDisminucion 2s infinite;
         }
-</style>
+        .caida.caida-animacion {
+            animation: caida 1s forwards;
+        }
+
+        @keyframes caida {
+            0% {
+                
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(600px); /* Ajusta según el tamaño de la pantalla */
+                opacity: 0;
+            }
+        }
+        .tag-wrap {
+            filter: drop-shadow(1px 1px 3px rgba(50, 50, 0, 0.5));
+            position: relative;
+            z-index: 999999;
+        }
+        @keyframes aumentoDisminucion {
+            0% {
+                transform: translate(-50%, -50%) scale(1); /* Tamaño original */
+            }
+            50% {
+                transform: translate(-50%, -50%) scale(1.1); /* Tamaño aumentado (150%) */
+            }
+            100% {
+                transform: translate(-50%, -50%) scale(1); /* Tamaño original (de nuevo) */
+            }
+        }
+        @keyframes aumentoDisminucion2 {
+            0% {
+                transform: scale(1); /* Tamaño original */
+            }
+            50% {
+                transform:  scale(1.1); /* Tamaño aumentado (150%) */
+            }
+            100% {
+                transform:  scale(1); /* Tamaño original (de nuevo) */
+            }
+        }
+        .linea{
+            width:8vw;
+            height: 2px;
+            background-color: white;
+            margin-top: 16;
+        }
+        .centro{
+            display: flex;
+            gap: 1vw;
+            justify-content: center;
+        }
+        .mar {
+            margin-bottom: 1.5vh;
+        }
+        .card {
+            /*background-image: url('./img/carta4.jpg'); background-size: cover; background-position: center;*/
+            
+            height: 50vh;
+            display: flex;
+    justify-content: center;
+    align-items: center;
+        }
+        .iconIti{
+            color: #ac4c26;
+    border: 1px solid rgb(134, 131, 131);
+    padding: 3vh;
+    border-radius: 50%;
+        }
+        .timeline-item{
+            margin-bottom: 10px;
+        }
+        .txtIti{
+            padding: 5px;
+            border: 1px solid black;
+            box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+            width: 60%;
+        } 
+        .fon{
+            background: rgb(242 240 233);
+            padding: 3px;
+        }
+        .fondo2{
+            width: 100vw;
+            margin-bottom: 10vh;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .fondo2 img {
+            width: 100%;
+        }
+        .contador {
+            position: absolute;
+            top: 80%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            z-index: 1;
+        }
+        .bordes{
+            border-top: 1px solid #653720;
+            border-bottom: 1px solid #653720;
+            padding-top: 4px;
+            padding-bottom: 4px;
+            font-size: 17px;
+        }
+        .dia{
+            font-size: 35px;
+            position: absolute;
+            background: #eeebe4;
+    transform: translateY(-30px) translateX(5px);
+        }
+        .nuestra{
+            letter-spacing: 5px;font-size: 70%; font-family: Verdana, Geneva, Tahoma, sans-serif;
+        }
+        .novios{
+            letter-spacing: 5px;
+            font-family: "Dancing Script", cursive;
+        }
+
+
+        .gallery {
+            column-count: 3; /* 3 columnas */
+            column-gap: 15px;
+            padding: 15px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Estilos para cada imagen en la galería */
+        .gallery img {
+            width: 100%;
+            height: auto;
+            margin-bottom: 15px;
+            border-radius: 10px;
+            transition: transform 0.3s ease;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Efecto hover para hacer zoom */
+        .gallery img:hover {
+            transform: scale(1.05);
+        }
+        .nuestro{
+            transform: translateX(-4vw) translateY(-2vh); 
+            color: #653720;
+            width: 70%;
+        }
+        /* Media queries para adaptar la galería a diferentes tamaños de pantalla */
+        @media (max-width: 1200px) {
+            .gallery {
+                column-count: 2;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .gallery {
+                column-count: 2;
+            }
+        }
+        @media (max-width: 380px){
+            .nuestro{
+                
+                width: 60%;
+                transform: translate(-3vw, -5vw);
+
+            }
+            .nov{
+                transform: translateX(-15px);
+            }
+        }
+        .btnFecha{
+            background-color: #e0e0e0;
+  border-radius: 50px;
+  box-shadow: inset 4px 4px 10px #bcbcbc, inset -4px -4px 10px #ffffff;
+  color: #653720;
+  cursor: pointer;
+  padding: 8px;
+  transition: all 0.2s ease-in-out;
+  border: 2px solid rgb(206, 206, 206);
+        }
+        .flechas{
+            animation: flecha 3s infinite;
+        }
+
+        @keyframes flecha {
+            0% {
+                transform: scale(1); /* Tamaño original */
+            }
+            50% {
+                transform: scale(1.1); /* Tamaño original (de nuevo) */
+            }
+            100% {
+                transform: scale(1); /* Tamaño original (de nuevo) */
+            }
+        }
+        .flex{
+            display: flex;
+            width: 100%;
+            justify-content: center;
+            align-items: center;
+            padding:0;
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+        footer{
+            padding: 5px;
+            box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+            background: #fff;
+            color:#653720;
+        }
+        footer span{
+            font-size: 35px;
+            
+           
+        }
+        
+    </style>
+</head>
 <body>
-    <div>
-        <img class="imgFondo" src="img/fondo.jpg" alt="">
-        <div class="titulo">
-            <label class="title">NOS CASAMOS</label>
-            <label style="margin-bottom: 15px;"></label>
-            <label id="countdown">FALTAN</label>
+    <!--<div class="caida" id="caida" onclick="abrir()">
+        A & N
+    </div>
+    <div id="carta" class="carta">
+        <div class="tag-wrap">
+            <div id="izq" class="izquierdo">
+           
+            </div>
         </div>
         
+        <div id="der" class="derecho">
+          
+        </div>
+    </div>-->
+    <section id="section1">
+        <img class="imgFondo" src="img/fondoPrincipal.jpeg" alt="">
+        <div class="titulo">
+           
+            <div style="text-align: center; ">
+                <div> <div style="margin-bottom: 5%;"><img width="25%" src="./img/blanco.png" alt=""></div></div>
+                <div>
+                    <div class="centro mar">
+                    <div class="linea"></div>
+                    <div class="nuestra">Nuestra Boda</div>
+                    <div class="linea"></div>
+                    
+                </div>
+                <div class="mar novios">Alma & Neftalí</div>
+                <div class="mar nuestra" style="font-size: 25;">09 . 11 . 2024</div>
+                </div>
+                
+                
+                
+            </div>
+           
+           
+        </div>
+    </section>
+    <section id="section2" >
+        <div class="invitation-container ">
+            <div class="card">
+                <div data-aos="fade-up" style="width: 90%;
+                color: #fff;
+                margin: 10px;
+                border: 1px solid #0000001f;
+                padding: 10px;
+                border-radius: 1%;
+                box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;
+                color: #653720;
+                transform: translateY(-10vh);
+                background: #fff;" >
+                    <div data-aos="fade-right">
+                       
+                    <p style="font-size: 25px;">En compañía de nuestros papás...</p>  
+                        <div style="display: flex; justify-content: center;">
+                            <div>
+                                <p>Luis Miguel Esparza Gómez</p>
+                            <p>María Guadalupe  Santana Medina</p>
+                            </div>
+                            
+                        </div>
+                        <div style="display: flex; justify-content: center;">
+                            <div>
+                                <p>J. Guadalupe Gómez Ruvalcaba</p>
+                                <p>Ma. de Jesús Díaz López</p>
+                                </div>
+                        </div>
+                    </div> 
+                    <div data-aos="fade-up">
+                       
+                        <p style="font-size: 25px;">... y padrinos</p>  
+                        <div style="display: flex; justify-content: center;">
+                            <div>
+                                <p>Gustavo Delgadillo Martínez</p>
+                            <p>Tere Gómez Díaz</p>
+                            </div>
+                            
+                        </div>
+                        
+                    </div>
+                    
+                   
+                </div>
+                
+            </div>
+            <div class="fondo2">
+                <img class="imgFondo2" src="./img/fondo.jpeg" alt="">
+                <div class="contador" >
+                    <!--<div id="countdown">
+                        <div class="tiempo"><div class="line"><div id="days">00</div><div style="font-size: 14px;"> Días</div></div></div>
+                        <div class="tiempo"><div class="line"><div id="hours">00</div><div style="font-size: 14px;"> Horas</div></div></div>
+                        <div class="tiempo"><div class="line"><div id="minutes">00</div><div style="font-size: 14px;"> Minutos</div></div></div>
+                        <div class="tiempo"><div class="line"><div id="seconds">00</div><div style="font-size: 14px;"> Segundos</div></div></div>
+                    </div>-->
+                    <div id="countdown">
+                        <div class="tiempo" id="days-box" data-value="00">
+                            <div class="line upper" id="days-upper">00</div>
+                            <div class="line lower" id="days-lower">00</div>
+                            <div class="label" style="font-size: 14px;">Días</div>
+                        </div>
+                        <div class="tiempo" id="hours-box" data-value="00">
+                            <div class="line upper" id="hours-upper">00</div>
+                            <div class="line lower" id="hours-lower">00</div>
+                            <div class="label" style="font-size: 14px;">Horas</div>
+                        </div>
+                        <div class="tiempo" id="minutes-box" data-value="00">
+                            <div class="line upper" id="minutes-upper">00</div>
+                            <div class="line lower" id="minutes-lower">00</div>
+                            <div class="label" style="font-size: 14px;">Minutos</div>
+                        </div>
+                        <div class="tiempo" id="seconds-box" data-value="00">
+                            <div class="line upper" id="seconds-upper">00</div>
+                            <div class="line lower" id="seconds-lower">00</div>
+                            <div class="label" style="font-size: 14px;">Segundos</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="imgFon">
+              
+                <div class="nuestro" >
+                    <br>
+                    <div>Nuestro día</div><br>
+                   
+                    <div style="width: 95%; justify-content: center; margin-bottom: 3vh;" class="centro">
+                        <div style="width: 75%;" class="bordes">Sabado</div>
+                        <div style="width: 30%;" class="dia">
+                            <div style="font-size: 20px;" class="nov">Noviembre</div>
+                            <div>9</div>
+                        </div>
+                        <div style="width: 100%; text-align: right;" class="bordes">06:00 pm</div>
+                    </div>
+                    
+                    <div class="flechas">
+                        <a href="calendario.ics" download="Boda_Noviembre_2024.ics">
+                            <button class="btnFecha">Agendar Fecha</button>
+                        </a>
+                    </div>
+                </div>
+               
+            </div>
+            
+        </div>
+        
+    </section><br>  <br>    
+    <div style="text-align: center; box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; margin: 5px; border-radius: 20px;">
+       
+        <div class="gallery">
+            <div data-aos="fade-down"><img  src="./img/5.jpeg" alt="Foto de boda 5"></div>
+            <div data-aos="fade-down"><img  src="./img/1.jpeg" alt="Foto de boda 1"></div>
+            
+            
+            <div data-aos="fade-down"><img src="./img/4.jpeg" alt="Foto de boda 4"></div>
+            
+            
+            <div data-aos="fade-down"><img src="./img/7.jpeg" alt="Foto de boda 7"></div>
+            <div data-aos="fade-down"><img  src="./img/2.jpeg" alt="Foto de boda 2"></div>
+            <div data-aos="fade-down"><img  src="./img/8.jpeg" alt="Foto de boda 8"></div>
+            <div data-aos="fade-down"><img  src="./img/3.jpeg" alt="Foto de boda 3"></div>
+        </div>
     </div>
-    <div class="espacio"></div>
-    <div class="invitation-container">
-        <div class="decorative-border"></div>
-        <p>NUESTRA BODA</p>
-        <h1>ALMA <br> & <br> NEFTALÍ</h1>
-        <p>CON LA BENDICÍON DE DIOS Y <br> DE NUESTROS PADRES</p>
-        <div class="centro">
-            <div style="width: 100%;">
-                <p>LUIS MIGUEL ESPARZA GOMEZ</p>
-                <p>MARIA GUADALUPE SANTANA MEDINA</p>
+    <section id="section3">
+        <div style="text-align: center;">
+            <h1 style="color: #653720;">Itinerario</h1>
+        <div class="timeline">
+            <div class="lineatiempo" style="
+    position: absolute;
+    width: 2px;
+    height: 730px;
+    background: gray;
+    left: 19%;
+    z-index: 1;
+"></div>
+            <div class="timeline-item" >
+                <div class="timeline-content centro">
+                    <div data-aos="fade-right" class="itine"><span class="mdi mdi-church-outline iconIti"></span></div>
+                    <div class="txtIti" style="font-size: 20px;" data-aos="fade-down">
+                        <div class="fon" >
+                            <p>Ceremonía religiosa</p>
+                            <p>18:00 Horas</p>
+                            <p>Parroquia de la Santisima Trinidad <span style="cursor: pointer; font-size: 20px;" onclick="abrirMapaIgl()" class="mdi mdi-map-marker"></span></p>
+                        </div>
+                    </div>
+                    
+                </div>
             </div>
-            <div style="width: 100%;">
-                <p>LA FURIA</p>
-                <p>LA ESPOSA DE LA FURIA</p>
+            <div class="timeline-item">
+                <div class="timeline-content centro">
+                    
+                    <div data-aos="fade-right" class="itine"><span class="iconIti"><img width="30" height="30" src="https://img.icons8.com/ios/50/ac4c26/saxophone.png" alt="saxophone"/></span></div>
+                    <div class="txtIti" style="font-size: 20px;" data-aos="fade-down">
+                        <div class="fon" >
+                            <p>Recepción</p>
+                            <p>20:00 Horas</p>
+                            <p>Salón Club de Leones <span style="cursor: pointer; font-size: 20px;" onclick="abrirMapa()" class="mdi mdi-map-marker"></span></p>
+                        </div>
+                       
+                    </div>
+                </div>
             </div>
+            <div class="timeline-item">
+                <div class="timeline-content centro">
+                    <div data-aos="fade-right" class="itine"><span class="mdi mdi-silverware-fork-knife iconIti"></span></div>
+                    <div class="txtIti" style="font-size: 20px;" data-aos="fade-down">
+                        <div class="fon" >
+                            <p>Cena</p>
+                            <p>21:00 Horas</p>
+                            <p>Salón Club de Leones <span style="cursor: pointer; font-size: 20px;" onclick="abrirMapa()" class="mdi mdi-map-marker"></span></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-content centro">
+                    <div data-aos="fade-right" class="itine"><span class="mdi mdi-party-popper iconIti"></span></div>
+                    <div class="txtIti" style="font-size: 20px;" data-aos="fade-down">
+                        <div class="fon" >
+                            <p>Baile</p>
+                            <p>23:00 Horas</p>
+                            <p>Salón Club de Leones <span style="cursor: pointer; font-size: 20px;" onclick="abrirMapa()" class="mdi mdi-map-marker"></span></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br><br>
+
+            
         </div>
-        <p>LOS INVITAMOS CORDIALMENTE A CELEBRAR</p><br>
-        <div class="centro">
-            <div style="width: 100%;" class="bordes">NOVIEMBRE</div>
-            <div style="width: 20%;" class="dia">9</div>
-            <div style="width: 100%;" class="bordes">2024</div>
         </div>
-        <div class="date-time">
-            <p>6:00 PM <br> PARROQUIA DE LA SANTISIMA TRINIDAD</p>
-            <p>RECEPCION SALON CLUB DE LEONES</p>
-         
-        </div>
+        
+    </section>
+    <footer>
         <div>
-            <p>¡TE ESPERAMOS!</p>
+            <div class="flex">INVITACIÓN DISEÑADA POR:</div>
+            <div class="flex">JESPARZAS 2024</div>
+           
+                 
+                
+                <div style="display:flex; justify-content: center; align-items: center; gap:20px">
+                    <div onclick="face()"><span class="mdi mdi-facebook"></span></div>
+                    <div onclick="insta()"><span class="mdi mdi-instagram"></span></div>
+                </div>
+           
+           
         </div>
-    </div>
+    </footer>
 </body>
 </html>
 <script>
     $(document).ready(function() {
+        AOS.init({
+            duration: 1200, // Duración de la animación en milisegundos
+            easing: 'ease-in-out',
+        });
         // Fecha objetivo
-        var targetDate = new Date("2024-11-09T19:00:00").getTime();
+        const targetDate = new Date('2024-11-09T15:59:59').getTime();
 
-        // Actualizar la cuenta regresiva cada 1 segundo
-        var countdown = setInterval(function() {
-            var now = new Date().getTime();
-            var distance = targetDate - now;
+    const updateCountdown = () => {
+        const now = new Date().getTime();
+        const distance = targetDate - now;
 
-            // Cálculo de días, horas, minutos y segundos
-            var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-            var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-            var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-            // Mostrar la cuenta regresiva en el label
-            $("#countdown").text("FALTAN " + days + "d " + hours + "h " + minutes + "m " + seconds + "s ");
+        flip(document.getElementById('days-box'), days);
+        flip(document.getElementById('hours-box'), hours);
+        flip(document.getElementById('minutes-box'), minutes);
+        flip(document.getElementById('seconds-box'), seconds);
 
-            // Si la cuenta regresiva ha terminado
-            if (distance < 0) {
-                clearInterval(countdown);
-                $("#countdown").text("¡La boda ha comenzado!");
-            }
-        }, 100);
+        // Cuando llegue a 0
+        if (distance < 0) {
+            clearInterval(interval);
+            document.getElementById('days-upper').innerHTML = '00';
+            document.getElementById('hours-upper').innerHTML = '00';
+            document.getElementById('minutes-upper').innerHTML = '00';
+            document.getElementById('seconds-upper').innerHTML = '00';
+        }
+    };
+
+    const flip = (element, value) => {
+    const upper = element.querySelector('.upper');
+    const lower = element.querySelector('.lower');
+    
+    const previousValue = element.getAttribute('data-value');
+    
+    // Solo realiza el flip si el valor realmente ha cambiado
+    if (previousValue !== value.toString()) {
+        element.setAttribute('data-value', value); // Almacena el nuevo valor
+
+        upper.innerHTML = previousValue < 10 ? '0' + previousValue : previousValue;
+        lower.innerHTML = value < 10 ? '0' + value : value;
+
+        element.classList.add('flip');
+        setTimeout(() => {
+            element.classList.remove('flip');
+            upper.innerHTML = value < 10 ? '0' + value : value; // Actualiza al nuevo valor una vez completado el flip
+        }, 600); // Duración del flip
+    }
+};
+
+    // Actualiza el contador cada segundo
+    const interval = setInterval(updateCountdown, 1000);
     });
+    function abrir(){
+
+    }
+   /*document.getElementById('caida').addEventListener('click', function() {
+        this.classList.add('caida-animacion');
+        var izq = document.getElementById('izq');
+            izq.style.transform = 'translateY(-100%)';
+            var der = document.getElementById('der');
+            der.style.transform = 'translateY(115%)';
+        // Opcionalmente, puedes eliminar el div después de que termine la animación
+        setTimeout(() => {
+            this.style.display = 'none';
+            $("#carta").hide();
+        }, 1000); // Asegúrate de que este tiempo coincida con la duración de la animación
+    });*/
+    function abrirMapa(){
+        window.open("https://www.google.com.mx/maps/place/Club+de+Leones+de+Villa+Hidalgo,+Jalisco/@21.6812278,-102.5882525,19z/data=!4m6!3m5!1s0x8429b9fefa401e63:0x8273e5d62d52f7ba!8m2!3d21.6812291!4d-102.5877205!16s%2Fg%2F11fq2jb996?entry=ttu");
+    }
+    function abrirMapaIgl(){
+        window.open("https://www.google.com.mx/maps/place/Parroquia+de+la+Santisima+Trinidad,+Villa+Hidalgo,+Jalisco/@21.6732544,-102.5900714,18.96z/data=!4m6!3m5!1s0x8429b9904890a6d9:0x212ea06392ffd8d4!8m2!3d21.6737536!4d-102.589423!16s%2Fg%2F1pxq80qr9?entry=ttu");
+    }
+    function face(){
+        window.open("https://www.facebook.com/tono.esparza.94?mibextid=JRoKGi");
+    }
+    function insta(){
+        window.open("https://www.instagram.com/antonies96?igsh=MW00aXNqM2hzYmRiaA%3D%3D&utm_source=qr");
+    }
 </script>
